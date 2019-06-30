@@ -21,7 +21,7 @@ genreNameIds = {
 	"Business": 1321,
 }
 
-reviewsURL = "https://itunes.apple.com/us/rss/customerreviews/id=135066958/sortBy=mostRecent/json"
+reviewsURL = "https://itunes.apple.com/us/rss/customerreviews/sortBy=mostRecent/json"
 
 def getAndSaveData(url):
 	reviews = get(url)

@@ -1,3 +1,8 @@
+# ignore vim swap files
 *.swp
 
+# ignore generated csv files
 *.csv
+
+# ignore python c files
+*.pyc
