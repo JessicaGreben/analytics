@@ -21,10 +21,10 @@ genreNameIds = {
 	"Business": 1321,
 }
 
-URL = "https://itunes.apple.com/us/rss/customerreviews/id=135066958/sortBy=mostRecent/json"
+reviewsURL = "https://itunes.apple.com/us/rss/customerreviews/id=135066958/sortBy=mostRecent/json"
 
 def getAndSaveData(url):
-	reviews = get(URL)
+	reviews = get(url)
 
 	with open('itunes_reviews.csv', 'a') as csvfile:
 	    fieldnames = ['rating', 'rating_id', 'rating_author', 'rating_title']
@@ -40,12 +40,9 @@ def getAndSaveData(url):
 	          'rating_title': review["title"]["label"].encode('utf8'),
 	      })
 
-	# FIXME: Trying to get all pages of data, but this doesn't quite work yet
-	# links = reviews.json()["feed"]["link"]
-	# for link in links:
-	# 	if link["attributes"]["rel"] == "next":
-	# 		if link["attributes"]["href"]:
-	# 			getAndSaveData(link["attributes"]["href"])
+getAndSaveData(reviewsURL)
 
-
-getAndSaveData(URL)
+for page in range(2,7):
+	print page
+	x = "https://itunes.apple.com/us/rss/customerreviews/page={}/id=135066958/sortby=mostrecent/json?urlDesc=/customerreviews/id=135066958/sortBy=mostRecent/json".format(page)
+	getAndSaveData(x)
