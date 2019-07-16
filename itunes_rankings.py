@@ -46,10 +46,10 @@ def getAndSaveData(url, country, genre):
 	    		continue
 
 	    	if "EconTalk" in review["im:name"]["label"]:
-				with open('itunes_rankings.csv', 'a') as csvfile:
-					fieldnames = ['title', 'date', 'country','genre','ranking']
-					writer = DictWriter(csvfile, fieldnames=fieldnames)
-				  	writer.writerow({
+			with open('itunes_rankings.csv', 'a') as csvfile:
+				 fieldnames = ['title', 'date', 'country','genre','ranking']
+				 writer = DictWriter(csvfile, fieldnames=fieldnames)
+				 writer.writerow({
 				    	'title': review["im:name"]["label"].encode('utf8'),
 				    	'date': now.strftime("%Y-%m-%d"),
 				    	'country': country,
